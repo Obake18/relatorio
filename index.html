@@ -3,6 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="caminho/para/o/seu/icone.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="caminho/para/o/seu/icone.ico" type="image/x-icon">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório Mensal</title>
 </head>
@@ -37,33 +41,17 @@
             <input type="number" id="minutos" placeholder="Minutos" step="5">
         </div>
 
-        <form>
+        <form id="relatorio-form">
             <label for="observacoes">Observações:</label>
             <div>
-                <textarea name="observacoes" id="observacoes" rows="5" cols="40" placeholder="Digite suas observações aqui"></textarea>
+                <textarea name="observacoes" id="observacoes" rows="5" cols="40"
+                    placeholder="Digite suas observações aqui"></textarea>
             </div>
+            <button type="submit">Enviar Relatório</button>
         </form>
     </div>
-
     <script src="classes.js"></script>
     <script src="relatorio.js"></script>
-    
-    <script>
-        document.getElementById('minutos').addEventListener('change', function () {
-            var minutos = parseInt(this.value);
-            var horasInput = document.getElementById('horas');
-            var horas = parseInt(horasInput.value);
-
-            if (minutos >= 60) {
-                horas += Math.floor(minutos / 60);
-                minutos %= 60;
-
-                // Atualizar os valores nos campos
-                horasInput.value = horas;
-                this.value = minutos;
-            }
-        });
-    </script>
 </body>
 
 </html>
