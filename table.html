@@ -1,16 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exibição de Dados do Publicador</title>
+    <style>
+        /* Estilos CSS para a exibição dos dados */
+        .publicador-info {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .publicador-info h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .publicador-info p {
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
 </head>
-
 <body>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+    <div class="publicador-info">
+        <h2>Dados do Publicador</h2>
+        <p><strong>Nome:</strong> <span id="nome"></span></p>
+        <p><strong>Mês:</strong> <span id="mes"></span></p>
+        <p><strong>Participou:</strong> <span id="participou"></span></p>
+        <p><strong>Estudo Bíblico:</strong> <span id="estudoBiblico"></span></p>
+        <p><strong>Horas:</strong> <span id="horas"></span></p>
+        <p><strong>Minutos:</strong> <span id="minutos"></span></p>
+        <p><strong>Observações:</strong> <span id="observacoes"></span></p>
+    </div>
 
+    <!-- Script para preencher os valores -->
+    <script>
+        const publicador = new Publicador("João", "Janeiro", true, 3, 10, 30, "Ótimo trabalho!");
+
+        // Preenche os valores nos elementos HTML
+        document.getElementById("nome").textContent = publicador.nome;
+        document.getElementById("mes").textContent = publicador.mes;
+        document.getElementById("participou").textContent = publicador.participou ? "Sim" : "Não";
+        document.getElementById("estudoBiblico").textContent = publicador.estudoBiblico;
+        document.getElementById("horas").textContent = publicador.horas;
+        document.getElementById("minutos").textContent = publicador.minutos;
+        document.getElementById("observacoes").textContent = publicador.observacoes;
+    </script>
 </body>
-
 </html>

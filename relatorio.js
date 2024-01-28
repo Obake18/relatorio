@@ -26,13 +26,3 @@ var publicador = new Publicador(nome, mes, participou, estudoBiblico, horas, min
 
 // Adicionar lógica adicional conforme necessário
 console.log(publicador);
-
-// Enviar os dados para o Google Apps Script
-fetch('https://script.google.com/macros/s/AKfycbxkALlhFhs_fT_bmfnlNnKBZci_rTAPZM50_ziWfZ9Q0m3_q1Ijqmpdn9teBlflpT42/exec', {
-    method: 'POST',
-    mode:'no-cors',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: `nome=${nome}&mes=${mes}&participou=${participou}&estudoBiblico=${estudoBiblico}&horas=${horas}&minutos=${minutos}&observacoes=${observacoes}`
-});
