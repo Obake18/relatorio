@@ -86,6 +86,20 @@ function enviarDadosParaFirebase(publicador) {
     // Use o método update para adicionar o novo nó ao banco de dados
     update(databaseRef, newNode);
 
+    // Função para limpar os campos do formulário
+function limparCampos() {
+    document.getElementById('nome').value = '';
+    document.getElementById('mes').value = '';
+    document.getElementById('atividade-sim').checked = false;
+    document.getElementById('estudo-number').value = '';
+    document.getElementById('horas').value = '';
+    document.getElementById('minutos').value = '';
+    document.getElementById('observacoes').value = '';
+}
+
     // (Opcional) Adicionar lógica adicional após o envio para o Firebase
     console.log("Dados enviados para o Firebase!");
+    alert("Seu relatório foi devidamente enviado!");
+    // Limpar os campos do formulário
+    limparCampos();
 }
