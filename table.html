@@ -30,28 +30,32 @@
             <td id="observacoesCell"></td>
         </tr>
     </table>
+
+    <button onclick="baixarComoMarkdown()">Baixar como Markdown</button>
+
 </body>
 
 <script>
-    function baixarComoMarkdown() {
-        var tabela = document.getElementById('tabelaRelatorios');
-        var markdown = '';
-        for (var i = 0; i < tabela.rows.length; i++) {
-            for (var j = 0; j < tabela.rows[i].cells.length; j++) {
-                markdown += tabela.rows[i].cells[j].innerText;
-                if (j < tabela.rows[i].cells.length - 1) {
-                    markdown += ' | ';
-                }
+function baixarComoMarkdown() {
+    var tabela = document.getElementById('tabelaRelatorios');
+    var markdown = '';
+    for (var i = 0; i < tabela.rows.length; i++) {
+        for (var j = 0; j < tabela.rows[i].cells.length; j++) {
+            markdown += tabela.rows[i].cells[j].innerText;
+            if (j < tabela.rows[i].cells.length - 1) {
+                markdown += ' | ';
             }
-            markdown += '\\n';
         }
-
-        var blob = new Blob([markdown], { type: 'text/markdown' });
-        var link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = 'dados.md';
-        link.click();
+        markdown += '\\n';
     }
+
+    var blob = new Blob([markdown], { type: 'text/markdown' });
+    var link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'dados.md';
+    link.click();
+}
+
 </script>
 
 </html>

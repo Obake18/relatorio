@@ -24,33 +24,23 @@ var databaseRef = ref(database, 'relatorios');
 // Crie uma consulta para obter os dados
 var relatoriosQuery = query(databaseRef);
 
-// Função para organizar os nomes em ordem alfabética
-function organizarNomesAlfabeticamente(data) {
-    const nomes = Object.values(data).map((relatorio) => relatorio.nome || "Não informado");
-    nomes.sort((a, b) => a.localeCompare(b));
-    return nomes;
-}
-
 // Use a função on para ouvir as alterações nos dados
 onValue(relatoriosQuery, (snapshot) => {
     const data = snapshot.val();
     if (data) {
         // Os dados existem, então você pode processá-los como quiser
 
-        // Organize os nomes em ordem alfabética
-        const nomesOrdenados = organizarNomesAlfabeticamente(data);
+        // Mapeie os dados para um array de relatórios
+        const relatorios = Object.values(data);
 
-        // Agora você pode usar os nomes ordenados conforme necessário
-        console.log("Nomes em ordem alfabética:", nomesOrdenados);
+        // Organize os relatórios em ordem alfabética pelo nome
+        relatorios.sort((a, b) => (a.nome || "").localeCompare(b.nome || ""));
 
         var table = document.getElementById('tabelaRelatorios'); // Obtenha a referência para a tabela
         table.innerHTML = ''; // Limpe a tabela
 
-        // Use os nomes ordenados para percorrer os dados
-        nomesOrdenados.forEach((nome) => {
-            // Encontre o relatório correspondente ao nome
-            const relatorio = Object.values(data).find((r) => r.nome === nome);
-
+        // Percorra os relatórios
+        relatorios.forEach((relatorio) => {
             // Crie uma nova linha para cada publicador
             var row = table.insertRow(-1);
 
@@ -68,8 +58,8 @@ onValue(relatoriosQuery, (snapshot) => {
             cell2.innerHTML = relatorio.mes || "Não informado";
             cell3.innerHTML = relatorio.participou ? 'Sim' : 'Não';
             cell4.innerHTML = relatorio.estudoBiblico || "Não informado";
-            cell5.innerHTML = relatorio.horas || "Não informado";
-            cell6.innerHTML = relatorio.minutos || "0"; // Se for NaN, defina como "0"
+            cell5.innerHTML = isNaN(relatorio.horas) ? "0" : relatorio.horas; // Se for NaN, defina como "0"
+            cell6.innerHTML = isNaN(relatorio.minutos) ? "0" : relatorio.minutos; // Se for NaN, defina como "0"
             cell7.innerHTML = relatorio.observacoes || "Nada informado";
         });
     } else {
