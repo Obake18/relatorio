@@ -1,0 +1,40 @@
+/* Estilo geral da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #6495ed; /* azul centáurea */
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f0f8ff; /* aliceblue */
+}
+
+tr:hover {
+    background-color: #b0e0e6; /* pó azul */
+}
+
+/* Estilo do botão de baixar */
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4169e1; /* azul real */
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e90ff; /* trapaceiro azul */
+}

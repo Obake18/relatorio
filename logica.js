@@ -18,21 +18,39 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
-
 // Obtenha uma referência para o banco de dados
 var databaseRef = ref(database, 'relatorios');
 
 // Crie uma consulta para obter os dados
 var relatoriosQuery = query(databaseRef);
 
+// Função para organizar os nomes em ordem alfabética
+function organizarNomesAlfabeticamente(data) {
+    const nomes = Object.values(data).map((relatorio) => relatorio.nome || "Não informado");
+    nomes.sort((a, b) => a.localeCompare(b));
+    return nomes;
+}
+
 // Use a função on para ouvir as alterações nos dados
 onValue(relatoriosQuery, (snapshot) => {
     const data = snapshot.val();
     if (data) {
         // Os dados existem, então você pode processá-los como quiser
+
+        // Organize os nomes em ordem alfabética
+        const nomesOrdenados = organizarNomesAlfabeticamente(data);
+
+        // Agora você pode usar os nomes ordenados conforme necessário
+        console.log("Nomes em ordem alfabética:", nomesOrdenados);
+
         var table = document.getElementById('tabelaRelatorios'); // Obtenha a referência para a tabela
         table.innerHTML = ''; // Limpe a tabela
-        for (let id in data) {
+
+        // Use os nomes ordenados para percorrer os dados
+        nomesOrdenados.forEach((nome) => {
+            // Encontre o relatório correspondente ao nome
+            const relatorio = Object.values(data).find((r) => r.nome === nome);
+
             // Crie uma nova linha para cada publicador
             var row = table.insertRow(-1);
 
@@ -44,14 +62,14 @@ onValue(relatoriosQuery, (snapshot) => {
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
 
-            // Defina o texto de cada célula
-            cell1.innerHTML = data[id].nome;
-            cell2.innerHTML = data[id].mes;
-            cell3.innerHTML = data[id].participou ? 'Sim' : 'Não';
-            cell4.innerHTML = data[id].estudoBiblico;
-            cell5.innerHTML = data[id].horas;
-            cell6.innerHTML = data[id].observacoes;
-        }
+            // Defina o texto de cada célula, e preencha com "não informado" se for null ou undefined
+            cell1.innerHTML = relatorio.nome || "Não informado";
+            cell2.innerHTML = relatorio.mes || "Não informado";
+            cell3.innerHTML = relatorio.participou ? 'Sim' : 'Não';
+            cell4.innerHTML = relatorio.estudoBiblico || "Não informado";
+            cell5.innerHTML = relatorio.horas || "Não informado";
+            cell6.innerHTML = relatorio.observacoes || "Não informado";
+        });
     } else {
         // Os dados não existem
         console.log("Nenhum dado encontrado");

@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" href="estilos.css">
     <script type="module" src="logica.js"></script>
     <meta charset="UTF-8">
     <title>Informações do Publicador</title>
 </head>
+
 <body>
     <h1>Informações do Publicador</h1>
     <table id="tabelaRelatorios">
         <tr>
-            <th>Nome</th>
-            <th>Mês</th>
-            <th>Participou de alguma atividade</th>
-            <th>Estudo Bíblico</th>
-            <th>Horas</th>
-            <th>Observações</th>
+            <td id="nomeCell">Nome do Publicador</td>
+            <td id="mesCell">Mês</td>
+            <td id="participouCell">Sim/Não</td>
+            <td id="estudoBiblicoCell">Estudo Bíblico</td>
+            <td id="horasCell">Horas</td>
+            <td id="observacoesCell">Observações</td>
         </tr>
-        <!-- As linhas da tabela serão preenchidas dinamicamente pelo JavaScript -->
+
     </table>
 </body>
+
+<script>
+    function baixarComoMarkdown() {
+        var tabela = document.getElementById('tabelaRelatorios');
+        var markdown = '';
+        for (var i = 0; i < tabela.rows.length; i++) {
+            for (var j = 0; j < tabela.rows[i].cells.length; j++) {
+                markdown += tabela.rows[i].cells[j].innerText;
+                if (j < tabela.rows[i].cells.length - 1) {
+                    markdown += ' | ';
+                }
+            }
+            markdown += '\\n';
+        }
+
+        var blob = new Blob([markdown], { type: 'text/markdown' });
+        var link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'dados.md';
+        link.click();
+    }
+</script>
+
 </html>
