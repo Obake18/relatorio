@@ -38,3 +38,35 @@ button {
 button:hover {
     background-color: #1e90ff; /* trapaceiro azul */
 }
+
+/* Tamanho padrão da fonte do html */
+html {
+    font-size: 16px;
+}
+
+/* Tamanho da fonte do html para telas menores que 600px */
+@media (max-width: 600px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+/* Tamanho da fonte do html para telas maiores que 1200px */
+@media (min-width: 1200px) {
+    html {
+        font-size: 24px;
+    }
+}
+
+/* Tamanho da fonte dos elementos em relação ao html */
+h1 {
+    font-size: 2rem; /* 32px no padrão, 40px no pequeno, 48px no grande */
+}
+
+p {
+    font-size: 1rem; /* 16px no padrão, 20px no pequeno, 24px no grande */
+}
+
+button {
+    font-size: 1.2rem; /* 19.2px no padrão, 24px no pequeno, 28.8px no grande */
+}

@@ -1,4 +1,4 @@
-import { ref, push } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+import { ref, push, update } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
@@ -18,9 +18,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
-
-
-
 
 document.getElementById('minutos').addEventListener('change', function () {
     var minutos = parseInt(this.value);
@@ -61,13 +58,14 @@ document.getElementById('relatorio-form').addEventListener('submit', function (e
     // Enviar dados para o Firebase Realtime Database
     enviarDadosParaFirebase(publicador);
 });
+
 // Função para enviar dados para o Firebase Realtime Database
 function enviarDadosParaFirebase(publicador) {
     // Obtenha uma referência para o banco de dados
     var databaseRef = ref(database, 'relatorios');
 
     // Gere um ID aleatório para o novo nó
-    var newId = databaseRef.push().key;
+    var newId = push(databaseRef).key;
 
     // Crie um objeto que representa a instância da classe Publicador
     var publicadorData = {
@@ -86,9 +84,8 @@ function enviarDadosParaFirebase(publicador) {
     newNode['Publicador' + newId] = publicadorData;
 
     // Use o método update para adicionar o novo nó ao banco de dados
-    databaseRef.update(newNode);
+    update(databaseRef, newNode);
 
     // (Opcional) Adicionar lógica adicional após o envio para o Firebase
     console.log("Dados enviados para o Firebase!");
 }
-
