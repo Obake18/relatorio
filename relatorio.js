@@ -45,8 +45,8 @@ document.getElementById('relatorio-form').addEventListener('submit', function (e
     var estudoBiblicoInput = document.getElementById('estudo-number').value;
     var estudoBiblico = estudoBiblicoInput ? parseInt(estudoBiblicoInput) : 0;
 
-    var horas = parseInt(document.getElementById('horas').value);
-    var minutos = parseInt(document.getElementById('minutos').value);
+    var horas = horasInput ? parseInt(horasInput) : 0;
+    var estudoBiblico = estudoBiblicoInput ? parseInt(estudoBiblicoInput) : 0;
     var observacoes = document.getElementById('observacoes').value;
 
     // Criar uma instância da classe Publicador

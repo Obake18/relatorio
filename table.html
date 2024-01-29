@@ -12,37 +12,50 @@
     <h1>Informações do Publicador</h1>
     <table id="tabelaRelatorios">
         <tr>
-            <td id="nomeCell">Nome do Publicador</td>
-            <td id="mesCell">Mês</td>
-            <td id="participouCell">Sim/Não</td>
-            <td id="estudoBiblicoCell">Estudo Bíblico</td>
-            <td id="horasCell">Horas</td>
-            <td id="observacoesCell">Observações</td>
+            <th>Nome do Publicador</th>
+            <th>Mês</th>
+            <th>Participou?</th>
+            <th>Estudo Bíblico</th>
+            <th>Horas</th>
+            <th>Minutos</th>
+            <th>Observações</th>
         </tr>
-
+        <tr>
+            <td id="nomeCell"></td>
+            <td id="mesCell"></td>
+            <td id="participouCell"></td>
+            <td id="estudoBiblicoCell"></td>
+            <td id="horasCell"></td>
+            <td id="minutosCell"></td>
+            <td id="observacoesCell"></td>
+        </tr>
     </table>
+
+    <button onclick="baixarComoMarkdown()">Baixar como Markdown</button>
+
 </body>
 
 <script>
-    function baixarComoMarkdown() {
-        var tabela = document.getElementById('tabelaRelatorios');
-        var markdown = '';
-        for (var i = 0; i < tabela.rows.length; i++) {
-            for (var j = 0; j < tabela.rows[i].cells.length; j++) {
-                markdown += tabela.rows[i].cells[j].innerText;
-                if (j < tabela.rows[i].cells.length - 1) {
-                    markdown += ' | ';
-                }
+function baixarComoMarkdown() {
+    var tabela = document.getElementById('tabelaRelatorios');
+    var markdown = '';
+    for (var i = 0; i < tabela.rows.length; i++) {
+        for (var j = 0; j < tabela.rows[i].cells.length; j++) {
+            markdown += tabela.rows[i].cells[j].innerText;
+            if (j < tabela.rows[i].cells.length - 1) {
+                markdown += ' | ';
             }
-            markdown += '\\n';
         }
-
-        var blob = new Blob([markdown], { type: 'text/markdown' });
-        var link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = 'dados.md';
-        link.click();
+        markdown += '\\n';
     }
+
+    var blob = new Blob([markdown], { type: 'text/markdown' });
+    var link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'dados.md';
+    link.click();
+}
+
 </script>
 
 </html>
