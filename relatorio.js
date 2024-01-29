@@ -1,3 +1,27 @@
+import { ref, push } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyD7pxlaSYxB40Nr3qbTbHLEh-gJgN4EPIM",
+    authDomain: "gears2-e0f35.firebaseapp.com",
+    projectId: "gears2-e0f35",
+    storageBucket: "gears2-e0f35.appspot.com",
+    messagingSenderId: "509544137239",
+    appId: "1:509544137239:web:b205fadff126a48b181252",
+    measurementId: "G-6K9W1YF08V"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const database = getDatabase(app);
+
+
+
+
 document.getElementById('minutos').addEventListener('change', function () {
     var minutos = parseInt(this.value);
     var horasInput = document.getElementById('horas');
@@ -7,22 +31,52 @@ document.getElementById('minutos').addEventListener('change', function () {
         horas += Math.floor(minutos / 60);
         minutos %= 60;
 
-        // Atualizar os valores nos campos
-        horasInput.value = horas;
-        this.value = minutos;
+        // Atualizar os valores nos campos com zero à esquerda
+        horasInput.value = horas.toString().padStart(2, '0');
+        this.value = minutos.toString().padStart(2, '0');
     }
 });
-// Capturar os valores dos campos
-var nome = document.getElementById('nome').value;
-var mes = document.getElementById('mes').value;
-var participou = document.getElementById('atividade-sim').checked;
-var estudoBiblico = parseInt(document.getElementById('estudo-number').value);
-var horas = parseInt(document.getElementById('horas').value);
-var minutos = parseInt(document.getElementById('minutos').value);
-var observacoes = document.getElementById('observacoes').value;
 
-// Criar uma instância da classe Publicador
-var publicador = new Publicador(nome, mes, participou, estudoBiblico, horas, minutos, observacoes);
+// Adicionar um ouvinte de evento para o formulário
+document.getElementById('relatorio-form').addEventListener('submit', function (event) {
+    event.preventDefault();  // Evita que o formulário seja enviado normalmente
 
-// Adicionar lógica adicional conforme necessário
-console.log(publicador);
+    // Capturar os valores dos campos dentro do evento de submissão
+    var nome = document.getElementById('nome').value;
+    var mes = document.getElementById('mes').value;
+    var participou = document.getElementById('atividade-sim').checked;
+    var estudoBiblicoInput = document.getElementById('estudo-number').value;
+    var estudoBiblico = estudoBiblicoInput ? parseInt(estudoBiblicoInput) : 0;
+
+    var horas = parseInt(document.getElementById('horas').value);
+    var minutos = parseInt(document.getElementById('minutos').value);
+    var observacoes = document.getElementById('observacoes').value;
+
+    // Criar uma instância da classe Publicador
+    var publicador = new Publicador(nome, mes, participou, estudoBiblico, horas, minutos, observacoes);
+
+    // Adicionar lógica adicional conforme necessário
+    console.log(publicador);
+
+    // Enviar dados para o Firebase Realtime Database
+    enviarDadosParaFirebase(publicador);
+});
+function enviarDadosParaFirebase(publicador) {
+    // Obtenha uma referência para o banco de dados
+    var databaseRef = ref(database, 'relatorios');
+
+    // Use o método push para adicionar um novo nó com os dados do objeto Publicador
+    push(databaseRef, {
+        nome: publicador.nome,
+        mes: publicador.mes,
+        participou: publicador.participou,
+        estudoBiblico: publicador.estudoBiblico,
+        horas: publicador.horas.toString().padStart(2, '0'),
+        minutos: publicador.minutos.toString().padStart(2, '0'),
+        observacoes: publicador.observacoes
+        // Adicione outros campos conforme necessário
+    });
+
+    // (Opcional) Adicionar lógica adicional após o envio para o Firebase
+    console.log("Dados enviados para o Firebase!");
+}

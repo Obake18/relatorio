@@ -2,27 +2,16 @@
 <html lang="en">
 
 <head>
+    <script type="module" src="relatorio.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="caminho/para/o/seu/icone.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="caminho/para/o/seu/icone.ico" type="image/x-icon">
-
+    <link rel="icon" href="assets/icon/_928d1e67-98c7-4477-b7b7-085424290eab.jpg" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório Mensal</title>
 </head>
 
 <body>
 
-
-    <script src="firebase.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
-    </script>
-
-
-    </script>
     <h1>Preencha seu Relatório</h1>
 
     <div id="container">
@@ -48,7 +37,7 @@
 
         <div>
             <label for="horas">Horas(Se for pioneiro auxiliar, regular, especial, ou missionário de campo)</label>
-            <input type="number" id="horas" placeholder="Horas">
+            <input type="number" id="horas" placeholder="Horas" value="0">
             <input type="number" id="minutos" placeholder="Minutos" step="5">
         </div>
 
@@ -61,8 +50,8 @@
             <button type="submit">Enviar Relatório</button>
         </form>
     </div>
+
     <script src="classes.js"></script>
-    <script src="relatorio.js"></script>
 </body>
 
 </html>
