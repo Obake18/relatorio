@@ -61,6 +61,7 @@ onValue(relatoriosQuery, (snapshot) => {
             var cell4 = row.insertCell(3);
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
 
             // Defina o texto de cada célula, e preencha com "não informado" se for null ou undefined
             cell1.innerHTML = relatorio.nome || "Não informado";
@@ -68,7 +69,8 @@ onValue(relatoriosQuery, (snapshot) => {
             cell3.innerHTML = relatorio.participou ? 'Sim' : 'Não';
             cell4.innerHTML = relatorio.estudoBiblico || "Não informado";
             cell5.innerHTML = relatorio.horas || "Não informado";
-            cell6.innerHTML = relatorio.observacoes || "Não informado";
+            cell6.innerHTML = relatorio.minutos || "0"; // Se for NaN, defina como "0"
+            cell7.innerHTML = relatorio.observacoes || "Nada informado";
         });
     } else {
         // Os dados não existem
