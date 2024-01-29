@@ -61,12 +61,17 @@ document.getElementById('relatorio-form').addEventListener('submit', function (e
     // Enviar dados para o Firebase Realtime Database
     enviarDadosParaFirebase(publicador);
 });
+// Função para enviar dados para o Firebase Realtime Database
 function enviarDadosParaFirebase(publicador) {
     // Obtenha uma referência para o banco de dados
     var databaseRef = ref(database, 'relatorios');
 
-    // Use o método push para adicionar um novo nó com os dados do objeto Publicador
-    push(databaseRef, {
+    // Gere um ID aleatório para o novo nó
+    var newId = databaseRef.push().key;
+
+    // Crie um objeto que representa a instância da classe Publicador
+    var publicadorData = {
+        id: newId,
         nome: publicador.nome,
         mes: publicador.mes,
         participou: publicador.participou,
@@ -74,9 +79,16 @@ function enviarDadosParaFirebase(publicador) {
         horas: publicador.horas.toString().padStart(2, '0'),
         minutos: publicador.minutos.toString().padStart(2, '0'),
         observacoes: publicador.observacoes
-        // Adicione outros campos conforme necessário
-    });
+    };
+
+    // Crie um objeto que representa o novo nó
+    var newNode = {};
+    newNode['Publicador' + newId] = publicadorData;
+
+    // Use o método update para adicionar o novo nó ao banco de dados
+    databaseRef.update(newNode);
 
     // (Opcional) Adicionar lógica adicional após o envio para o Firebase
     console.log("Dados enviados para o Firebase!");
 }
+

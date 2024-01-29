@@ -30,16 +30,27 @@ onValue(relatoriosQuery, (snapshot) => {
     const data = snapshot.val();
     if (data) {
         // Os dados existem, então você pode processá-los como quiser
+        var table = document.getElementById('tabelaRelatorios'); // Obtenha a referência para a tabela
+        table.innerHTML = ''; // Limpe a tabela
         for (let id in data) {
-            console.log(`ID: ${id}`);
-            console.log(`Nome: ${data[id].nome}`);
-            console.log(`Mês: ${data[id].mes}`);
-            console.log(`Participou: ${data[id].participou}`);
-            console.log(`Estudo Bíblico: ${data[id].estudoBiblico}`);
-            console.log(`Horas: ${data[id].horas}`);
-            console.log(`Minutos: ${data[id].minutos}`);
-            console.log(`Observações: ${data[id].observacoes}`);
-            console.log('---');
+            // Crie uma nova linha para cada publicador
+            var row = table.insertRow(-1);
+
+            // Crie uma nova célula para cada propriedade do publicador
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+
+            // Defina o texto de cada célula
+            cell1.innerHTML = data[id].nome;
+            cell2.innerHTML = data[id].mes;
+            cell3.innerHTML = data[id].participou ? 'Sim' : 'Não';
+            cell4.innerHTML = data[id].estudoBiblico;
+            cell5.innerHTML = data[id].horas;
+            cell6.innerHTML = data[id].observacoes;
         }
     } else {
         // Os dados não existem
