@@ -49,6 +49,13 @@ document.getElementById('relatorio-form').addEventListener('submit', function (e
     var minutos = parseInt(document.getElementById('minutos').value);
     var observacoes = document.getElementById('observacoes').value;
 
+    
+    if (!nome || !mes ) {
+        // Display an error message or throw an error as per your requirement
+        alert("Por favor, preencha todos os campos obrigatórios!");
+        return;
+    }
+
     // Criar uma instância da classe Publicador
     var publicador = new Publicador(nome, mes, participou, estudoBiblico, horas, minutos, observacoes);
 
@@ -58,6 +65,7 @@ document.getElementById('relatorio-form').addEventListener('submit', function (e
     // Enviar dados para o Firebase Realtime Database
     enviarDadosParaFirebase(publicador);
 });
+
 
 // Função para enviar dados para o Firebase Realtime Database
 function enviarDadosParaFirebase(publicador) {
