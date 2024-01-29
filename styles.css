@@ -2,6 +2,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    text-align: center; /* Adicionado para centralizar todos os elementos */
 }
 
 h1 {
@@ -19,11 +20,15 @@ h1 {
 
 /* Estilo dos inputs e botões */
 input, textarea, button {
-    border: none;
+    border: #333 1px solid;
     outline: none;
     padding: 10px;
     margin: 10px;
+    width: 90%;
     border-radius: 5px; /* Bordas arredondadas */
+    display: block; /* Adicionado para centralizar os inputs e botões */
+    margin-left: auto; /* Adicionado para centralizar os inputs e botões */
+    margin-right: auto; /* Adicionado para centralizar os inputs e botões */
 }
 
 input[type=radio] {

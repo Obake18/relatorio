@@ -11,24 +11,20 @@
 <body>
     <h1>Informações do Publicador</h1>
     <table id="tabelaRelatorios">
-        <tr>
-            <th>Nome do Publicador</th>
-            <th>Mês</th>
-            <th>Participou?</th>
-            <th>Estudo Bíblico</th>
-            <th>Horas</th>
-            <th>Minutos</th>
-            <th>Observações</th>
-        </tr>
-        <tr>
-            <td id="nomeCell"></td>
-            <td id="mesCell"></td>
-            <td id="participouCell"></td>
-            <td id="estudoBiblicoCell"></td>
-            <td id="horasCell"></td>
-            <td id="minutosCell"></td>
-            <td id="observacoesCell"></td>
-        </tr>
+        <thead>
+            <tr>
+                <th>Nome do Publicador</th>
+                <th>Mês</th>
+                <th>Participou?</th>
+                <th>Estudo Bíblico</th>
+                <th>Horas</th>
+                <th>Minutos</th>
+                <th>Observações</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabela">
+            <!-- As linhas de dados serão inseridas aqui -->
+        </tbody>
     </table>
 
     <button onclick="baixarComoMarkdown()">Baixar como Markdown</button>
