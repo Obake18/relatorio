@@ -3,6 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="estilos.css">
+    <script type="text/javascript" src="dist/excellentexport.js"></script>
+    
     <script type="module" src="logica.js"></script>
     <meta charset="UTF-8">
     <title>Informações do Publicador</title>
@@ -27,30 +29,36 @@
         </tbody>
     </table>
 
-    <button onclick="baixarComoMarkdown()">Baixar como Markdown</button>
+    <button id="botaoBaixar">Baixar como CSV</button>
 
 </body>
 
 <script>
-function baixarComoMarkdown() {
+function baixarComoCSV() {
     var tabela = document.getElementById('tabelaRelatorios');
-    var markdown = '';
+    var csv = '';
+
+    // Adicionar cabeçalho e dados
     for (var i = 0; i < tabela.rows.length; i++) {
-        for (var j = 0; j < tabela.rows[i].cells.length; j++) {
-            markdown += tabela.rows[i].cells[j].innerText;
-            if (j < tabela.rows[i].cells.length - 1) {
-                markdown += ' | ';
-            }
-        }
-        markdown += '\\n';
+        var row = Array.from(tabela.rows[i].cells);
+        csv += row.map(cell => cell.innerText).join(',') + '\n';
     }
 
-    var blob = new Blob([markdown], { type: 'text/markdown' });
+    // Remover a última linha vazia
+    csv = csv.slice(0, -1);
+
+    // Codificar os dados da tabela em um formato compatível com URL
+    var csvData = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+    // Criar um link para baixar os dados
     var link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.download = 'dados.md';
+    link.href = csvData;
+    link.download = 'dados.csv';
     link.click();
 }
+
+// Altere o evento onclick do botão para chamar a função
+document.getElementById('botaoBaixar').onclick = baixarComoCSV;
 
 </script>
 
