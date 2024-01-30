@@ -1,26 +1,42 @@
 /* Estilo geral do site */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     text-align: center; /* Adicionado para centralizar todos os elementos */
+    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode {
+    background: linear-gradient(to bottom, #cbd0db, #f0f0f0); /* Adicionado gradiente */
+    color: #333;
+}
+
+body.dark-mode {
+    background: linear-gradient(to bottom, #3c414b, #252525); /* Adicionado gradiente */
+    color: #f0f0f0;
 }
 
 h1 {
     text-align: center;
-    color: #333;
 }
 
 #container {
     width: 80%;
     margin: 0 auto;
-    background-color: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode #container {
+    background-color: #fff;
+}
+
+body.dark-mode #container {
+    background-color: #1d1d1d;
 }
 
 /* Estilo dos inputs e botões */
 input, textarea, button {
-    border: #333 0.4px solid;
     outline: none;
     padding: 10px;
     margin: 10px;
@@ -29,6 +45,19 @@ input, textarea, button {
     display: block; /* Adicionado para centralizar os inputs e botões */
     margin-left: auto; /* Adicionado para centralizar os inputs e botões */
     margin-right: auto; /* Adicionado para centralizar os inputs e botões */
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode input, body.light-mode textarea {
+    background-color: #fff;
+    color: #333;
+    border: #6495ed 0.4px solid;
+}
+
+body.dark-mode input, body.dark-mode textarea, body.dark-mode button {
+    background-color: #444;
+    color: #f0f0f0;
+    border: #858fa3 0.4px solid;
 }
 
 input[type=radio] {
@@ -37,11 +66,24 @@ input[type=radio] {
 }
 
 button {
-    background-color: #6495ed;
-    color: #fff;
     cursor: pointer;
+    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode button {
+    background-color: #6495ed; /* Cor de fundo dos botões no modo claro */
+    color: #fff;
+}
+
+body.dark-mode button {
+    background-color: #445f94; /* Cor de fundo dos botões no modo escuro */
+    color: #fff;
 }
 
 button:hover {
     background-color: #4169e1;
+}
+
+body.dark-mode button:hover {
+    background-color: #8499c4;
 }
