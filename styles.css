@@ -8,11 +8,15 @@ body {
 body.light-mode {
     background: linear-gradient(to bottom, #cbd0db, #f0f0f0); /* Adicionado gradiente */
     color: #333;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 body.dark-mode {
     background: linear-gradient(to bottom, #3c414b, #252525); /* Adicionado gradiente */
     color: #f0f0f0;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 h1 {
