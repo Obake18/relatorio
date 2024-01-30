@@ -1,26 +1,89 @@
+/* Estilo geral do site */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center; /* Adicionado para centralizar todos os elementos */
+    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode {
+    background: linear-gradient(to bottom, #cbd0db, #f0f0f0); /* Adicionado gradiente */
+    color: #333;
+}
+
+body.dark-mode {
+    background: linear-gradient(to bottom, #3c414b, #252525); /* Adicionado gradiente */
+    color: #f0f0f0;
+}
+
 /* Estilo geral da tabela */
 table {
     width: 100%;
     border-collapse: collapse;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode table {
+    background-color: #fff;
+    color: #333;
+}
+
+body.dark-mode table {
+    background-color: #444;
+    color: #f0f0f0;
 }
 
 th, td {
     padding: 10px;
-    border: 1px solid #ccc;
     text-align: left;
+    transition: border 0.5s ease, background-color 0.5s ease, color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode th, body.light-mode td {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+}
+
+body.dark-mode th, body.dark-mode td {
+    border: 1px solid #858fa3;
+    background-color: #444;
+    color: #f0f0f0;
 }
 
 th {
+    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode th {
     background-color: #acb5c5; /* azul centáurea */
-    color: #fff;
+}
+
+body.dark-mode th {
+    background-color: #858fa3; 
 }
 
 tr:nth-child(even) {
+    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode tr:nth-child(even) {
     background-color: #f0f8ff; /* aliceblue */
 }
 
+body.dark-mode tr:nth-child(even) {
+    background-color: #555; /* um cinza mais escuro para contraste */
+}
+
 tr:hover {
+    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode tr:hover {
     background-color: #b0e0e6; /* pó azul */
+}
+
+body.dark-mode tr:hover {
+    background-color: #666; /* um cinza ainda mais escuro para contraste */
 }
 
 /* Estilo do botão de baixar */
@@ -30,13 +93,30 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4169e1; /* azul real */
-    color: #fff;
     cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode button {
+    background-color: #6495ed; /* Cor de fundo dos botões no modo claro */
+    color: #fff;
+}
+
+body.dark-mode button {
+    background-color: #445f94; /* Cor de fundo dos botões no modo escuro */
+    color: #fff;
 }
 
 button:hover {
-    background-color: #1e90ff; /* trapaceiro azul */
+    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+body.light-mode button:hover {
+    background-color: #4169e1;
+}
+
+body.dark-mode button:hover {
+    background-color: #8499c4;
 }
 
 /* Tamanho padrão da fonte do html */
