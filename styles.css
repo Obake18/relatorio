@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center; /* Adicionado para centralizar todos os elementos */
     transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+    min-height: vh;
 }
 
 body.light-mode {
