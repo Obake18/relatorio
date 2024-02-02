@@ -157,3 +157,55 @@ p {
 button {
     font-size: 1.2rem; /* 19.2px no padrão, 24px no pequeno, 28.8px no grande */
 }
+
+
+/* Adicione o código abaixo ao seu arquivo estilos.css */
+
+/* Defina um estilo para o container de login */
+#login-container {
+    /* Centralize o container horizontalmente */
+    margin: 0 auto;
+
+    /* Defina uma largura máxima para o container */
+    max-width: 400px;
+
+    /* Adicione uma borda e um espaçamento interno para o container */
+    border: 1px solid #ccc;
+    padding: 20px;
+
+    /* Centralize o container verticalmente */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Defina um estilo para os campos de entrada */
+#email, #senha {
+    /* Faça os campos ocuparem toda a largura disponível */
+    width: 100%;
+
+    /* Adicione uma borda e um espaçamento interno para os campos */
+    border: 1px solid #ccc;
+    padding: 10px;
+
+    /* Adicione uma margem inferior para separar os campos */
+    margin-bottom: 10px;
+}
+
+/* Defina um estilo para o botão de login */
+#botao-login {
+    /* Faça o botão ocupar toda a largura disponível */
+    width: 100%;
+
+    /* Adicione uma cor de fundo e uma cor de texto para o botão */
+    background-color: #007bff;
+    color: white;
+
+    /* Adicione uma borda e um espaçamento interno para o botão */
+    border: none;
+    padding: 10px;
+
+    /* Adicione um efeito de cursor para o botão */
+    cursor: pointer;
+}
