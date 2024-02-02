@@ -1,4 +1,6 @@
-// Your web app's Firebase configuration
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyD7pxlaSYxB40Nr3qbTbHLEh-gJgN4EPIM",
     authDomain: "gears2-e0f35.firebaseapp.com",
@@ -9,42 +11,32 @@ const firebaseConfig = {
     measurementId: "G-6K9W1YF08V"
 };
 
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const analytics = firebase.getAnalytics(app);
-const database = firebase.getDatabase(app);
+// Inicialize o Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 
 // Função para fazer login
 function login(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password)
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-        // Usuário logado
-        var user = userCredential.user;
-        
-        // Verifique se o usuário tem permissão para acessar a página
-        var ref = firebase.database().ref('users/' + user.uid);
-        ref.once('value', function(snapshot) {
-          if (snapshot.val().hasAccess) {
-            // O usuário tem acesso, redirecione para a página
-            window.location.href = "table.html";
-          } else {
-            // O usuário não tem acesso, mostre uma mensagem de erro
-            alert("Você não tem permissão para acessar esta página.");
-          }
-        });
+      // Usuário logado
+      const user = userCredential.user;
+      
+      // Redirecione para a página após o login bem-sucedido
+      window.location.href = "table.html";
     })
     .catch((error) => {
-        // Erro no login
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert("Erro no login: " + errorMessage);
+      // Erro no login
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert("Erro no login: " + errorMessage);
     });
 }
 
 // Vincular a função ao formulário de login
 document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    login(email, password);
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  login(email, password);
 });
