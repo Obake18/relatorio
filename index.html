@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://kit.fontawesome.com/8795f1462c.js" crossorigin="anonymous"></script>
     <script type="module" src="relatorio.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css" />
@@ -28,7 +29,7 @@
 
         <div>
             <label for="atividade">Marque se você participou de alguma modalidade do ministério durante o mês</label>
-            <input type="radio" name="atividade" id="atividade-sim" required>
+            <input type="checkbox" name="atividade" id="atividade-sim" required>
         </div>
 
         <div>
@@ -50,7 +51,11 @@
             </div>
             <button type="submit">Enviar Relatório</button>
         </form>
-        <button id="mode-toggle">Alternar Modo</button>
+        <button id="mode-toggle">
+            <i class="fa-solid fa-moon"></i>
+            //
+            <i class="fa-regular fa-sun"></i>
+        </button>
 
 <script>
     var toggleButton = document.getElementById('mode-toggle');

@@ -45,12 +45,16 @@ input, textarea, button {
     outline: none;
     padding: 10px;
     margin: 10px;
-    width: 90%;
+    width: 70%;
     border-radius: 5px; /* Bordas arredondadas */
     display: block; /* Adicionado para centralizar os inputs e botões */
     margin-left: auto; /* Adicionado para centralizar os inputs e botões */
     margin-right: auto; /* Adicionado para centralizar os inputs e botões */
     transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+}
+
+#container #mode-toggle {
+    width: 10%; /* Removido o !important e adicionado um seletor mais específico */
 }
 
 body.light-mode input, body.light-mode textarea {
@@ -65,10 +69,11 @@ body.dark-mode input, body.dark-mode textarea, body.dark-mode button {
     border: #858fa3 0.4px solid;
 }
 
-input[type=radio] {
-    width: auto;
-    margin: 10px 5px;
+input[type=checkbox] + label {
+    margin-left: 8px;
 }
+
+
 
 button {
     cursor: pointer;
