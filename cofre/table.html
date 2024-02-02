@@ -2,19 +2,25 @@
 <html lang="pt-br">
 
 <head>
-
     <script type="module">
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
-
+        import { getAuth, getRedirectResult } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+    
         const auth = getAuth();
-
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                // Nenhum usuário está logado, redirecione para a página de login
-                window.location.href = "login.html";
-            }
-        });
+    
+        getRedirectResult(auth)
+            .then((result) => {
+                // Se o resultado for vazio, redirecione para a página de login
+                if (!result.user) {
+                    window.location.href = "login.html";
+                }
+                // Se o resultado tiver um usuário, carregue a página normalmente
+            })
+            .catch((error) => {
+                // Trate os possíveis erros de autenticação
+                console.error(error);
+            });
     </script>
+    
     <link rel="stylesheet" href="estilos.css">
     <link rel="icon" href="assets/icon/icone.png?">
     <script type="module" src="logica.js"></script>
