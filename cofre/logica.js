@@ -1,6 +1,8 @@
+// Importe os módulos necessários do Firebase Authentication
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
 import { getDatabase, ref, onValue, query } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,6 +19,82 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
+
+// Obtenha uma instância do objeto Auth
+const auth = getAuth();
+
+// Obtenha os elementos de login
+const loginContainer = document.getElementById('login-container');
+const emailInput = document.getElementById('email');
+const senhaInput = document.getElementById('senha');
+const botaoLogin = document.getElementById('botao-login');
+
+// Obtenha os elementos da página
+const tabelaRelatorios = document.getElementById('tabelaRelatorios');
+const botaoBaixar = document.getElementById('botaoBaixar');
+const modeToggle = document.getElementById('mode-toggle');
+
+// Crie uma função para mostrar os elementos de login
+function mostrarLogin() {
+    loginContainer.style.display = 'block';
+    tabelaRelatorios.style.display = 'none';
+    botaoBaixar.style.display = 'none';
+    modeToggle.style.display = 'none';
+}
+
+// Crie uma função para mostrar os elementos da página
+function mostrarPagina() {
+    loginContainer.style.display = 'none';
+    tabelaRelatorios.style.display = 'table';
+    botaoBaixar.style.display = 'inline-block';
+    modeToggle.style.display = 'inline-block';
+}
+
+// Crie uma função para fazer o login com o Firebase
+function fazerLogin() {
+    // Obtenha o e-mail e a senha digitados
+    const email = emailInput.value;
+    const senha = senhaInput.value;
+
+    // Valide os campos de entrada
+    if (email === '' || senha === '') {
+        alert('Por favor, digite o seu e-mail e senha.');
+        return;
+    }
+
+    // Tente fazer o login com o Firebase
+    signInWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+            // Login bem-sucedido
+            const user = userCredential.user;
+            console.log('Usuário logado: ' + user.email);
+            mostrarPagina();
+        })
+        .catch((error) => {
+            // Login falhou
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(errorCode + ': ' + errorMessage);
+            alert('E-mail ou senha incorretos.');
+        });
+}
+
+// Adicione um evento de clique ao botão de login
+botaoLogin.addEventListener('click', fazerLogin);
+
+// Verifique o estado de autenticação do usuário
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // Usuário está logado
+        console.log('Usuário logado: ' + user.email);
+        mostrarPagina();
+    } else {
+        // Usuário não está logado
+        console.log('Usuário não logado.');
+        mostrarLogin();
+    }
+});
+
 
 // Obtenha uma referência para o banco de dados
 const databaseRef = ref(database, 'relatorios');
