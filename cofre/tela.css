@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: background-color 0.5s ease;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none; /* Removendo sublinhado dos links */
+}
+
+body.light-mode {
+    background: linear-gradient(to bottom, #cbd0db, #f0f0f0);
+    color: #333;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.dark-mode {
+    background: linear-gradient(to bottom, #3c414b, #252525);
+    color: #f0f0f0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s ease;
+}
+
+body.light-mode #container {
+    background-color: #fff;
+}
+
+body.dark-mode #container {
+    background-color: #1d1d1d;
+}
+
+/* Estilo dos inputs e botões */
+input, button {
+    outline: none;
+    padding: 10px;
+    margin: 10px;
+    width: 90%;
+    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
+
+body.light-mode input {
+    background-color: #fff;
+    color: #333;
+    border: #6495ed 0.4px solid;
+}
+
+body.dark-mode input, body.dark-mode button {
+    background-color: #444;
+    color: #f0f0f0;
+    border: #858fa3 0.4px solid;
+}
+
+button {
+    width: 50%;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+body.light-mode button {
+    background-color: #6495ed;
+    color: #fff;
+}
+
+body.dark-mode button {
+    background-color: #445f94;
+    color: #fff;
+}
+
+button:hover {
+    background-color: #4169e1;
+}
+
+body.dark-mode button:hover {
+    background-color: #8499c4;
+}

@@ -18,51 +18,28 @@ const auth = getAuth();
 
 // Função para fazer login
 function login(email, password) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Usuário logado
-      const user = userCredential.user;
-      
-      // Redirecione para a página após o login bem-sucedido
-      window.location.href = "table.html";
-    })
-    .catch((error) => {
-      // Erro no login
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert("Erro no login: " + errorMessage);
-    });
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Usuário logado
+            const user = userCredential.user;
+
+            // Redirecione para a página após o login bem-sucedido
+            window.location.href = "table.html";
+        })
+        .catch((error) => {
+            // Erro no login
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert("Erro no login: " + errorMessage);
+        });
 }
 
-// Função para atualizar a senha
-function updatePassword(newPassword) {
-  const user = auth.currentUser;
-  
-  if (user) {
-    updatePassword(user, newPassword).then(() => {
-      alert("Senha atualizada com sucesso!");
-    }).catch((error) => {
-      // Erro ao atualizar a senha
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert("Erro ao atualizar a senha: " + errorMessage);
-    });
-  } else {
-    alert("Nenhum usuário está logado.");
-  }
-}
+
 
 // Vincular a função ao formulário de login
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  login(email, password);
-});
-
-// Vincular a função ao formulário de atualização de senha
-document.getElementById("updatePasswordForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  const newPassword = document.getElementById("newPassword").value;
-  updatePassword(newPassword);
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    login(email, password);
 });
