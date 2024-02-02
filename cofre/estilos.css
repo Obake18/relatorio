@@ -1,3 +1,26 @@
+#mode-toggle {
+    font-size: 1em;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+    display: flex; /* Adicionado para usar flexbox */
+    justify-content: center; /* Adicionado para alinhar o ícone horizontalmente */
+    align-items: center; /* Adicionado para alinhar o ícone verticalmente */
+}
+
+#mode-toggle i {
+    margin: auto;
+    font-size: 20px;
+}
+
+
+
 /* Estilo geral do site */
 body {
     font-family: Arial, sans-serif;
@@ -158,6 +181,14 @@ button {
     font-size: 1.2rem; /* 19.2px no padrão, 24px no pequeno, 28.8px no grande */
 }
 
+
+input{
+    margin: 10px;
+}
+
+#container {
+    width: 10%; /* Removido o !important e adicionado um seletor mais específico */
+}
 
 /* Adicione o código abaixo ao seu arquivo estilos.css */
 

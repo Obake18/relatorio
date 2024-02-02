@@ -153,3 +153,4 @@ onValue(relatoriosQuery, (snapshot) => {
     // Ocorreu um erro ao ler os dados
     console.error(error);
 });
+
