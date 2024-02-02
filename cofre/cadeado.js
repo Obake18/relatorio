@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, updatePassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
 
+// Sua configuração do Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyD7pxlaSYxB40Nr3qbTbHLEh-gJgN4EPIM",
     authDomain: "gears2-e0f35.firebaseapp.com",
@@ -33,10 +34,35 @@ function login(email, password) {
     });
 }
 
+// Função para atualizar a senha
+function updatePassword(newPassword) {
+  const user = auth.currentUser;
+  
+  if (user) {
+    updatePassword(user, newPassword).then(() => {
+      alert("Senha atualizada com sucesso!");
+    }).catch((error) => {
+      // Erro ao atualizar a senha
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert("Erro ao atualizar a senha: " + errorMessage);
+    });
+  } else {
+    alert("Nenhum usuário está logado.");
+  }
+}
+
 // Vincular a função ao formulário de login
 document.getElementById("loginForm").addEventListener("submit", function(event) {
   event.preventDefault();
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   login(email, password);
+});
+
+// Vincular a função ao formulário de atualização de senha
+document.getElementById("updatePasswordForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const newPassword = document.getElementById("newPassword").value;
+  updatePassword(newPassword);
 });
