@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="icon" href="assets/icon/icone.png?">
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<body class="light-mode">
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Senha:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+
+    <div>
+        <button id="mode-toggle" onclick="toggleMode()">Alternar Modo</button>
+    </div>
+
+    <script>
+        function toggleMode() {
+            var body = document.body;
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+            }
+        }
+    </script>
+</body>
+
+</html>
