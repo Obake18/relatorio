@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Tela de criação de usuário</title>
     <link rel="stylesheet" href="tela.css">
+    <script type="module" src="logica.js"></script> <!-- Importe o novo JS como um módulo -->
 </head>
 
 <body class="light-mode">
@@ -24,17 +25,12 @@
                 <button type="submit">Criar conta</button>
             </p>
         </form>
-
     </div>
 
-    <a href="login.html">
-        <button>Ir para a página de login</button>
-
-    </a>
+  
     <div>
         <button id="mode-toggle">Alternar Modo</button>
     </div>
-
 
     <script>
         var toggleButton = document.getElementById('mode-toggle');
