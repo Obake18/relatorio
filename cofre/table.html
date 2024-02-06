@@ -1,108 +1,88 @@
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <html lang="pt-br">
-
-<head>
-    <script src="https://kit.fontawesome.com/8795f1462c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="icon" href="/assets/icon/icone.png">
+  <head>
+    <meta charset="UTF-8" />
+    <script
+      src="https://kit.fontawesome.com/8795f1462c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="estilos.css" />
+    <link rel="icon" href="/assets/icon/icone.png" />
     <style>
-        /* Oculte os elementos de login e a tabela inicialmente */
-        #login-container,
-        #tabelaRelatorios {
-            display: none;
-        }
+      /* Oculte os elementos de login e a tabela inicialmente */
+      #login-container,
+      #tabelaRelatorios {
+        display: none;
+      }
     </style>
-    <button id="mode-toggle">
-        <i class="fa-sharp fa-solid fa-circle-half-stroke">
-    </i></button>
-
-    <script>
-        var toggleButton = document.getElementById('mode-toggle');
-        toggleButton.addEventListener('click', function () {
-            if (document.body.classList.contains('light-mode')) {
-                document.body.classList.remove('light-mode');
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-                document.body.classList.add('light-mode');
-            }
-        });
-    </script>
-
     <script type="module" src="logica.js"></script>
-    <meta charset="UTF-8">
+
     <title>Informações do Publicador</title>
-</head>
+  </head>
 
-<body class="light-mode">
-
+  <body class="light-mode">
     <!-- Crie uma div para conter os elementos de login -->
     <div id="login-container">
-        <!-- Crie um campo de entrada para o e-mail -->
-        <input id="email" type="email" placeholder="Digite o seu e-mail">
-        <!-- Crie um campo de entrada para a senha -->
-        <input id="senha" type="password" placeholder="Digite a sua senha">
-        <!-- Crie um botão para fazer o login -->
-        <button id="botao-login">Login</button>
+      <!-- Crie um campo de entrada para o e-mail -->
+      <input id="email" type="email" placeholder="Digite o seu e-mail" />
+      <!-- Crie um campo de entrada para a senha -->
+      <input id="senha" type="password" placeholder="Digite a sua senha" />
+      <!-- Crie um botão para fazer o login -->
+      <button id="botao-login">Login</button>
     </div>
 
     <h1>Informações do Publicador</h1>
     <table id="tabelaRelatorios">
-        <thead>
-            <tr>
-                <th>Nome do Publicador</th>
-                <th>Mês</th>
-                <th>Participou?</th>
-                <th>Estudo Bíblico</th>
-                <th>Horas</th>
-                <th>Minutos</th>
-                <th>Observações</th>
-            </tr>
-        </thead>
-        <tbody id="corpoTabela">
-            <!-- As linhas de dados serão inseridas aqui -->
-        </tbody>
+      <thead>
+        <tr>
+          <th>Nome do Publicador</th>
+          <th>Mês</th>
+          <th>Participou?</th>
+          <th>Estudo Bíblico</th>
+          <th>Horas</th>
+          <th>Minutos</th>
+          <th>Observações</th>
+        </tr>
+      </thead>
+      <tbody id="corpoTabela">
+        <!-- As linhas de dados serão inseridas aqui -->
+      </tbody>
     </table>
 
     <button id="botaoBaixar">Baixar como CSV</button>
 
-    <div id="login-container">
-        <!-- Crie um campo de entrada para o e-mail -->
-        <input id="email" type="email" placeholder="Digite o seu e-mail">
-        <!-- Crie um campo de entrada para a senha -->
-        <input id="senha" type="password" placeholder="Digite a sua senha">
-        <!-- Crie um botão para fazer o login -->
-        <button id="botao-login">Login</button>
-    </div>
-</body>
+    <button id="mode-toggle">
+      <i class="fa-sharp fa-solid fa-circle-half-stroke"> . </i>
+    </button>
+  </body>
 
-<script>
+  <script>
     function baixarComoCSV() {
-        var tabela = document.getElementById('tabelaRelatorios');
-        var csv = '';
+      var tabela = document.getElementById("tabelaRelatorios");
+      var csv = "";
 
-        // Adicionar cabeçalho e dados
-        for (var i = 0; i < tabela.rows.length; i++) {
-            var row = Array.from(tabela.rows[i].cells);
-            csv += row.map(cell => cell.innerText).join(',') + '\n';
-        }
+      // Adicionar cabeçalho e dados
+      for (var i = 0; i < tabela.rows.length; i++) {
+        var row = Array.from(tabela.rows[i].cells);
+        csv += row.map((cell) => cell.innerText).join(",") + "\n";
+      }
 
-        // Remover a última linha vazia
-        csv = csv.slice(0, -1);
+      // Remover a última linha vazia
+      csv = csv.slice(0, -1);
 
-        // Codificar os dados da tabela em um formato compatível com URL
-        var csvData = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+      // Codificar os dados da tabela em um formato compatível com URL
+      var csvData = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
 
-        // Criar um link para baixar os dados
-        var link = document.createElement('a');
-        link.href = csvData;
-        link.download = 'dados.csv';
-        link.click();
+      // Criar um link para baixar os dados
+      var link = document.createElement("a");
+      link.href = csvData;
+      link.download = "dados.csv";
+      link.click();
     }
 
     // Altere o evento onclick do botão para chamar a função
-    document.getElementById('botaoBaixar').onclick = baixarComoCSV;
-
-</script>
-
+    document.getElementById("botaoBaixar").onclick = baixarComoCSV;
+  </script>
 </html>
