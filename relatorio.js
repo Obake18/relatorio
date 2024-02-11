@@ -50,11 +50,11 @@ document.getElementById('relatorio-form').addEventListener('submit', function (e
     var observacoes = document.getElementById('observacoes').value;
 
     
-    if (!nome || !mes ) {
+ /*   if (!nome || !mes ) {
         // Display an error message or throw an error as per your requirement
         alert("Por favor, preencha todos os campos obrigatórios!");
         return;
-    }
+    } */
 
     // Criar uma instância da classe Publicador
     var publicador = new Publicador(nome, mes, participou, estudoBiblico, horas, minutos, observacoes);

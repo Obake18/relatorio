@@ -16,65 +16,65 @@
 
     <h1>Preencha seu Relatório</h1>
 
-    <div id="container">
-        <div>
-            <input type="text" id="nome" placeholder="Seu nome" required>
-        </div>
+    <!-- Mova a tag de abertura do form para aqui -->
+    <form id="relatorio-form">
+        <div id="container">
+            <div>
+                <input type="text" id="nome" placeholder="Seu nome" required>
+            </div>
 
 
-        <div>
-            <label for="mes">Mês</label>
-            <input type="month" id="mes" required>
-        </div>
+            <div>
+                <label for="mes">Mês</label>
+                <input type="month" id="mes" required>
+            </div>
 
-        <div>
-            <label for="atividade">Marque se você participou de alguma modalidade do ministério durante o mês</label>
-            <input type="checkbox" name="atividade" id="atividade-sim" required>
-        </div>
+            <div>
+                <label for="atividade">Marque se você participou de alguma modalidade do ministério durante o mês</label>
+                <input type="checkbox" name="atividade" id="atividade-sim">
+            </div>
 
-        <div>
-            <input type="number" id="estudo-number" min="0" placeholder="Estudos Bíblicos">
-        </div>
+            <div>
+                <input type="number" id="estudo-number" min="0" placeholder="Estudos Bíblicos">
+            </div>
 
-        <div>
-            <label for="horas">Horas(Se for pioneiro auxiliar, regular, especial, ou missionário de campo)</label>
-            <input type="number" id="horas" placeholder="Horas" value="0">
-            <input type="number" id="minutos" placeholder="Minutos" step="5">
-        </div>
+            <div>
+                <label for="horas">Horas(Se for pioneiro auxiliar, regular, especial, ou missionário de campo)</label>
+                <input type="number" id="horas" placeholder="Horas" value="0">
+                <input type="number" id="minutos" placeholder="Minutos" step="5">
+            </div>
 
-        <form id="relatorio-form">
             <label for="observacoes">Observações:</label>
             <div>
                 <textarea name="observacoes" id="observacoes" rows="5" cols="40"
                     placeholder="Digite suas observações aqui"></textarea>
             </div>
             <button type="submit">Enviar Relatório</button>
-        </form>
-        <button id="mode-toggle">
+        </div>
+    </form> <!-- Mova a tag de fechamento do form para aqui -->
+    <button id="mode-toggle">
 
-            <i class="fa-sharp fa-solid fa-circle-half-stroke"></i>
+        <i class="fa-sharp fa-solid fa-circle-half-stroke"></i>
 
-        </button>
+    </button>
 
-        <script>
-            var toggleButton = document.getElementById('mode-toggle');
-            toggleButton.addEventListener('click', function () {
-                if (document.body.classList.contains('light-mode')) {
-                    document.body.classList.remove('light-mode');
-                    document.body.classList.add('dark-mode');
-                } else {
-                    document.body.classList.remove('dark-mode');
-                    document.body.classList.add('light-mode');
-                }
-            });
+    <script>
+        var toggleButton = document.getElementById('mode-toggle');
+        toggleButton.addEventListener('click', function () {
+            if (document.body.classList.contains('light-mode')) {
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
+            }
+        });
 
-            document.getElementById('mode-toggle').addEventListener('click', function () {
-                this.style.transform = this.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
-            });
+        document.getElementById('mode-toggle').addEventListener('click', function () {
+            this.style.transform = this.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
 
-        </script>
-
-    </div>
+    </script>
 
     <script src="classes.js"></script>
 </body>
