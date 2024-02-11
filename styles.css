@@ -7,7 +7,7 @@ body {
 }
 
 body.light-mode {
-    background: linear-gradient(to bottom, #cbd0db, #f0f0f0); /* Adicionado gradiente */
+    background: linear-gradient(to bottom, #647599af, #f0f0f0); /* Adicionado gradiente */
     color: #333;
     background-size: cover;
     background-repeat: no-repeat;
@@ -19,6 +19,7 @@ body.dark-mode {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 
 h1 {
     text-align: center;
@@ -91,6 +92,7 @@ input, textarea, button {
     display: flex; /* Adicionado para usar flexbox */
     justify-content: center; /* Adicionado para alinhar o ícone horizontalmente */
     align-items: center; /* Adicionado para alinhar o ícone verticalmente */
+    animation: rotate 0.5s linear; /* Adicionado para fazer a rotação */
 }
 
 #mode-toggle i {
@@ -119,6 +121,7 @@ input[type=checkbox] + label {
 button {
     cursor: pointer;
     transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+
 }
 
 body.light-mode button {

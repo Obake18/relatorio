@@ -20,7 +20,7 @@
         <div>
             <input type="text" id="nome" placeholder="Seu nome" required>
         </div>
-        
+
 
         <div>
             <label for="mes">Mês</label>
@@ -67,6 +67,11 @@
                     document.body.classList.add('light-mode');
                 }
             });
+
+            document.getElementById('mode-toggle').addEventListener('click', function () {
+                this.style.transform = this.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+            });
+
         </script>
 
     </div>
