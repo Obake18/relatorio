@@ -1,4 +1,4 @@
-#mode-toggle {
+.mode-toggle {
     font-size: 1em;
     position: fixed;
     top: 10px;
@@ -44,6 +44,11 @@ body.dark-mode {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+body.dark-mode .mode-toggle i {
+    transform: rotate(180deg);
+  }
+  
 
 /* Estilo geral da tabela */
 table {
