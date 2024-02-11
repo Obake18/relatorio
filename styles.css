@@ -35,23 +35,19 @@ h1 {
     transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
 }
 
-@media (min-width: 1200px) {
+
+@media (min-width: 600px) { /* breakpoint para telas médias */
     #container {
-        width: 75%;
+        width: 60%; /* largura para telas médias */
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 900px) { /* breakpoint para telas grandes */
     #container {
-        width: 50%;
+        width: 40%; /* largura para telas grandes */
     }
 }
 
-@media (min-width: 1200px) {
-    #container {
-        width: 25%;
-    }
-}
 
 
 body.light-mode #container {
@@ -83,7 +79,7 @@ input, textarea, button {
     font-size: 1em;
     position: fixed;
     top: 80px;
-    right: 10px;
+    right: 14px;
     width: 40px;
     height: 40px;
     border: none;
