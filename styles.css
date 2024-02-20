@@ -1,25 +1,24 @@
 /* Estilo geral do site */
 body {
     font-family: Arial, sans-serif;
-    text-align: center; /* Adicionado para centralizar todos os elementos */
-    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+    text-align: center;
+    transition: background-color 0.5s ease;
     min-height: 100vh;
 }
 
 body.light-mode {
-    background: linear-gradient(to bottom, #647599af, #f0f0f0); /* Adicionado gradiente */
-    color: #333;
+    background: linear-gradient(to bottom, #637eb8, #ffffff);
+    color: #202020;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 body.dark-mode {
-    background: linear-gradient(to bottom, #55688f, #252525); /* Adicionado gradiente */
+    background: linear-gradient(to bottom, #293d64, #161616);
     color: #f0f0f0;
     background-size: cover;
     background-repeat: no-repeat;
 }
-
 
 h1 {
     text-align: center;
@@ -32,30 +31,30 @@ h1 {
     margin: 0 auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+    transition: background-color 0.5s ease;
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.11);
 }
 
 
-@media (min-width: 600px) { /* breakpoint para telas médias */
+@media (min-width: 600px) {
     #container {
-        width: 60%; /* largura para telas médias */
+        width: 60%;
     }
 }
 
-@media (min-width: 900px) { /* breakpoint para telas grandes */
+@media (min-width: 900px) {
     #container {
-        width: 40%; /* largura para telas grandes */
+        width: 40%;
     }
 }
-
-
 
 body.light-mode #container {
-    background-color: #fff;
+   background-color:  rgba(255, 255, 255, 0.521);
 }
 
 body.dark-mode #container {
-    background-color: #1d1d1d;
+   background-color: rgba(10, 10, 10, 0.507);
 }
 
 /* Estilo dos inputs e botões */
@@ -64,16 +63,12 @@ input, textarea, button {
     padding: 10px;
     margin: 10px;
     width: 70%;
-    border-radius: 5px; /* Bordas arredondadas */
-    display: block; /* Adicionado para centralizar os inputs e botões */
-    margin-left: auto; /* Adicionado para centralizar os inputs e botões */
-    margin-right: auto; /* Adicionado para centralizar os inputs e botões */
-    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
+    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
 }
-
-/* #container #mode-toggle {
-    width: 20%; /* Removido o !important e adicionado um seletor mais específico */
-
 
 #mode-toggle {
     font-size: 1em;
@@ -84,11 +79,11 @@ input, textarea, button {
     height: 40px;
     border: none;
     border-radius: 50%;
-    transition: background-color 0.5s ease, color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
-    display: flex; /* Adicionado para usar flexbox */
-    justify-content: center; /* Adicionado para alinhar o ícone horizontalmente */
-    align-items: center; /* Adicionado para alinhar o ícone verticalmente */
-    animation: rotate 0.5s linear; /* Adicionado para fazer a rotação */
+    transition: background-color 0.5s ease, color 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 0.5s linear;
 }
 
 #mode-toggle i {
@@ -112,21 +107,18 @@ input[type=checkbox] + label {
     margin-left: 8px;
 }
 
-
-
 button {
     cursor: pointer;
-    transition: background-color 0.5s ease; /* Adicionado para suavizar a transição entre os modos */
-
+    transition: background-color 0.5s ease;
 }
 
 body.light-mode button {
-    background-color: #6495ed; /* Cor de fundo dos botões no modo claro */
+    background-color: #6495ed;
     color: #fff;
 }
 
 body.dark-mode button {
-    background-color: #445f94; /* Cor de fundo dos botões no modo escuro */
+    background-color: #445f94;
     color: #fff;
 }
 

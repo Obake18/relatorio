@@ -18,17 +18,24 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
-
+// Adiciona um ouvinte de evento de mudança ao elemento com ID 'minutos'
 document.getElementById('minutos').addEventListener('change', function () {
+    // Obtém o valor dos minutos como um número inteiro
     var minutos = parseInt(this.value);
+
+    // Obtém o elemento de entrada de horas pelo ID
     var horasInput = document.getElementById('horas');
+    // Obtém o valor das horas como um número inteiro
     var horas = parseInt(horasInput.value);
 
+    // Verifica se o valor dos minutos é maior ou igual a 60
     if (minutos >= 60) {
+        // Incrementa o número de horas com base nos minutos excedentes
         horas += Math.floor(minutos / 60);
+        // Atualiza o valor dos minutos para o restante após a conversão para horas
         minutos %= 60;
 
-        // Atualizar os valores nos campos com zero à esquerda
+        // Atualiza os valores nos campos, adicionando zeros à esquerda se necessário
         horasInput.value = horas.toString().padStart(2, '0');
         this.value = minutos.toString().padStart(2, '0');
     }
@@ -36,7 +43,8 @@ document.getElementById('minutos').addEventListener('change', function () {
 
 // Adicionar um ouvinte de evento para o formulário
 document.getElementById('relatorio-form').addEventListener('submit', function (event) {
-    event.preventDefault();  // Evita que o formulário seja enviado normalmente
+    // Evita que o formulário seja enviado normalmente
+    event.preventDefault();
 
     // Capturar os valores dos campos dentro do evento de submissão
     var nome = document.getElementById('nome').value;
@@ -44,28 +52,26 @@ document.getElementById('relatorio-form').addEventListener('submit', function (e
     var participou = document.getElementById('atividade-sim').checked;
     var estudoBiblicoInput = document.getElementById('estudo-number').value;
     var estudoBiblico = estudoBiblicoInput ? parseInt(estudoBiblicoInput) : 0;
-
     var horas = parseInt(document.getElementById('horas').value);
     var minutos = parseInt(document.getElementById('minutos').value);
     var observacoes = document.getElementById('observacoes').value;
 
-    
- /*   if (!nome || !mes ) {
-        // Display an error message or throw an error as per your requirement
+    // Verifica se campos obrigatórios estão preenchidos (código comentado)
+    /* if (!nome || !mes ) {
+        // Exibir uma mensagem de erro ou lançar um erro conforme necessário
         alert("Por favor, preencha todos os campos obrigatórios!");
         return;
     } */
 
-    // Criar uma instância da classe Publicador
+    // Cria uma instância da classe Publicador com os valores capturados
     var publicador = new Publicador(nome, mes, participou, estudoBiblico, horas, minutos, observacoes);
 
-    // Adicionar lógica adicional conforme necessário
+    // Adiciona lógica adicional conforme necessário
     console.log(publicador);
 
-    // Enviar dados para o Firebase Realtime Database
+    // Envia dados para o Firebase Realtime Database
     enviarDadosParaFirebase(publicador);
 });
-
 
 // Função para enviar dados para o Firebase Realtime Database
 function enviarDadosParaFirebase(publicador) {
@@ -94,7 +100,15 @@ function enviarDadosParaFirebase(publicador) {
     // Use o método update para adicionar o novo nó ao banco de dados
     update(databaseRef, newNode);
 
-    // Função para limpar os campos do formulário
+    // (Opcional) Adicionar lógica adicional após o envio para o Firebase
+    console.log("Dados enviados para o Firebase!");
+    alert("Seu relatório foi devidamente enviado!");
+    
+    // Limpar os campos do formulário
+    limparCampos();
+}
+
+// Função para limpar os campos do formulário
 function limparCampos() {
     document.getElementById('nome').value = '';
     document.getElementById('mes').value = '';
@@ -103,11 +117,4 @@ function limparCampos() {
     document.getElementById('horas').value = '';
     document.getElementById('minutos').value = '';
     document.getElementById('observacoes').value = '';
-}
-
-    // (Opcional) Adicionar lógica adicional após o envio para o Firebase
-    console.log("Dados enviados para o Firebase!");
-    alert("Seu relatório foi devidamente enviado!");
-    // Limpar os campos do formulário
-    limparCampos();
 }
