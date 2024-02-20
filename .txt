@@ -1,6 +1,0 @@
- dig relatorio-cgleste +noall +answer -t AAAA
-> relatorio-cgleste     3600    IN AAAA     2606:50c0:8000::153
-> relatorio-cgleste     3600    IN AAAA     2606:50c0:8001::153
-> relatorio-cgleste     3600    IN AAAA     2606:50c0:8002::153
-> relatorio-cgleste     3600    IN AAAA     2606:50c0:8003::153
-Lembre-se de também marcar seu registro A.
