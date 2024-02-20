@@ -7,14 +7,14 @@ body {
 }
 
 body.light-mode {
-    background: linear-gradient(to bottom, #647599af, #f0f0f0);
-    color: #333;
+    background: linear-gradient(to bottom, #637eb8, #ffffff);
+    color: #202020;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 body.dark-mode {
-    background: linear-gradient(to bottom, #55688f, #252525);
+    background: linear-gradient(to bottom, #293d64, #161616);
     color: #f0f0f0;
     background-size: cover;
     background-repeat: no-repeat;
@@ -32,7 +32,10 @@ h1 {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: background-color 0.5s ease;
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.11);
 }
+
 
 @media (min-width: 600px) {
     #container {
@@ -47,11 +50,11 @@ h1 {
 }
 
 body.light-mode #container {
-    background-color: #fff;
+   background-color:  rgba(255, 255, 255, 0.521);
 }
 
 body.dark-mode #container {
-    background-color: #1d1d1d;
+   background-color: rgba(10, 10, 10, 0.507);
 }
 
 /* Estilo dos inputs e botões */
