@@ -7,14 +7,14 @@ body {
 }
 
 body.light-mode {
-    background: linear-gradient(to bottom, #637eb8, #ffffff);
+    background: linear-gradient(to bottom, #a3b8e6, rgb(107, 153, 218));
     color: #202020;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 body.dark-mode {
-    background: linear-gradient(to bottom, #293d64, #161616);
+    background: linear-gradient(to bottom, #293d64, #061427);
     color: #f0f0f0;
     background-size: cover;
     background-repeat: no-repeat;
@@ -50,7 +50,7 @@ h1 {
 }
 
 body.light-mode #container {
-   background-color:  rgba(255, 255, 255, 0.521);
+   background-color:  rgba(255, 255, 255, 0.507);
 }
 
 body.dark-mode #container {
@@ -92,15 +92,15 @@ input, textarea, button {
 }
 
 body.light-mode input, body.light-mode textarea {
-    background-color: #fff;
+    background-color: #ffffffa8;
     color: #333;
-    border: #6495ed 0.4px solid;
+    border: #93b8fc 0.4px solid;
 }
 
 body.dark-mode input, body.dark-mode textarea, body.dark-mode button {
-    background-color: #444;
+    background-color: #1d1d1d;
     color: #f0f0f0;
-    border: #858fa3 0.4px solid;
+    border: #546079 0.4px solid;
 }
 
 input[type=checkbox] + label {
