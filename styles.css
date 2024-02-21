@@ -185,5 +185,10 @@ label input[type="checkbox"] {
 
 }
 
-
+/* Estilo para o ícone de calendário do input do tipo month */
+input[type="month"]::-webkit-calendar-picker-indicator {
+    /* Personalize o ícone aqui. Por exemplo, você pode mudar a cor de fundo: */
+    background-color: rgba(166, 198, 240, 0.541);
+    border-radius: 50%;
+}
 
