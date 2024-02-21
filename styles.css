@@ -1,7 +1,9 @@
+
+
 /* Estilo geral do site */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    /* text-align: center; */
     transition: background-color 0.5s ease;
     min-height: 100vh;
 }
@@ -129,3 +131,58 @@ button:hover {
 body.dark-mode button:hover {
     background-color: #8499c4;
 }
+
+/* Estilo dos labels e checkboxes */
+label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 12px;
+    width: 100%;
+
+}
+
+.checkbox {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+
+
+    font-size: 12px;
+
+    width: 70%;
+    padding: 10px;
+    border: 1px;
+
+    margin: 10px auto 10px auto;
+
+}
+
+.checkbox p{
+    margin: 0;
+} 
+
+/* 
+.atividade-sim label{
+
+    margin-left: 3px;
+} 
+
+label input[type="checkbox"] {
+    margin-right: 1px !important;
+    margin-left: 4px;
+} */
+
+.horas label{
+    font-size: 10px;
+    width: 250px;
+
+    justify-content: center;
+    margin-left: 35px;
+
+}
+
+

@@ -24,21 +24,28 @@
             </div>
 
             <div>
-                <label for="mes">Mês</label>
-                <input type="month" id="mes" required>
+                <!-- <label for="mes">Mês</label> -->
+                <input type="month" id="mes"  placeholder="mês" required>
             </div>
 
-            <div>
-                <label for="atividade">Marque se você participou de alguma modalidade do ministério durante o mês</label>
-                <input type="checkbox" name="atividade" id="atividade-sim">
+            <div class="checkbox">
+                
+                <label>
+                    <input type="checkbox" name="atividade" id="atividade-sim" class="">
+                <p>Marque se você participou de alguma modalidade do ministério durante o mês</p>
+                </label>
+
+               
+             
+ 
             </div>
 
             <div>
                 <input type="number" id="estudo-number" min="0" placeholder="Estudos Bíblicos">
             </div>
 
-            <div>
-                <label for="horas">Horas(Se for pioneiro auxiliar, regular, especial, ou missionário de campo)</label>
+            <div class="horas">
+                <label for="horas" >Horas(Se for pioneiro auxiliar, regular, especial, ou missionário de campo)</label>
                 <input type="number" id="horas" placeholder="Horas" value="0">
                 <input type="number" id="minutos" placeholder="Minutos" step="5">
             </div>
@@ -74,7 +81,26 @@
             this.style.transform = this.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
         });
 
+
+
+
     </script>
+
+<script>
+
+    // Adicione este trecho de código para definir a data atual no campo de mês
+    document.addEventListener('DOMContentLoaded', function () {
+        var mesInput = document.getElementById('mes');
+
+        var currentDate = new Date();
+        var year = currentDate.getFullYear();
+        var month = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Adiciona zero à esquerda, se necessário
+        var dateString = year + '-' + month;
+
+        mesInput.value = dateString;
+    });
+</script>
+
 
     <!-- Importando a Classe JavaScript -->
     <script src="classes.js"></script>
