@@ -1,282 +1,203 @@
+
+
 /* Estilo geral do site */
 body {
-    align-items: center;
-    font-family: 'playfair';
-    /* text-align: center; */
-    transition: background-color 0.5s ease;
-    min-height: 100vh;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-in-out forwards;
-    
+  font-family: Arial, sans-serif;
+  /* text-align: center; */
+  transition: background-color 0.5s ease;
+  min-height: 100vh;
 }
 
 body.light-mode {
-    background: linear-gradient(to bottom, #a3b8e6, rgb(107, 153, 218));
-    color: #202020;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background: linear-gradient(to bottom, #a3b8e6, rgb(107, 153, 218));
+  color: #202020;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 body.dark-mode {
-    background: linear-gradient(to bottom, #293d64, #061427);
-    color: #f0f0f0;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background: linear-gradient(to bottom, #293d64, #061427);
+  color: #f0f0f0;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1 {
-    text-align: center;
-}
-
-/* Adicionando suavidade nas transições */
-* {
-    transition: all 0.3s ease;
+  text-align: center;
 }
 
 #container {
-  width: 19em;  /* Primeira definição de largura */
   border-radius: 2%;
-  width: 100%;   /* Segunda definição de largura, substituindo a primeira */
-  max-width: 70%;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
-
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   transition: background-color 0.5s ease;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.11);
 }
-
-.blur {
-
--webkit-box-shadow:0px 0px 300px 54px rgba(46,81,255,0.9);
--moz-box-shadow: 0px 0px 300px 54px rgba(46,81,255,0.9);
-box-shadow: 0px 0px 300px 54px rgba(46,81,255,0.9);
-}
-
 
 
 @media (min-width: 600px) {
-    #container {
-        width: 60%;
-    }
+  #container {
+      width: 60%;
+  }
 }
 
 @media (min-width: 900px) {
-    #container {
-        width: 40%;
-    }
+  #container {
+      width: 40%;
+  }
 }
 
 body.light-mode #container {
-   background-color:  rgba(255, 255, 255, 0.651);
+ background-color:  rgba(255, 255, 255, 0.507);
 }
 
 body.dark-mode #container {
-   background-color: rgba(10, 10, 10, 0.637);
+ background-color: rgba(10, 10, 10, 0.507);
 }
 
 /* Estilo dos inputs e botões */
 input, textarea, button {
-    outline: none;
-    padding: 10px;
-    margin: 10px;
-    width: 70%;
-    border-radius: 5px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+  outline: none;
+  padding: 10px;
+  margin: 10px;
+  width: 70%;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
 }
 
 #mode-toggle {
-    font-size: 1em;
-    position: fixed;
-    top: 80px;
-    right: 14px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    transition: background-color 0.5s ease, color 0.5s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: rotate 0.5s linear;
+  font-size: 1em;
+  position: fixed;
+  top: 80px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotate 0.5s linear;
 }
 
 #mode-toggle i {
-    margin: auto;
-    font-size: 20px;
+  margin: auto;
+  font-size: 20px;
 }
 
 body.light-mode input, body.light-mode textarea {
-    background-color: #ffffffa8;
-    color: #333;
-    border: #93b8fc 0.4px solid;
+  background-color: #ffffffa8;
+  color: #333;
+  border: #93b8fc 0.4px solid;
 }
 
 body.dark-mode input, body.dark-mode textarea, body.dark-mode button {
-    background-color: #1d1d1d;
-    color: #f0f0f0;
-    border: #546079 0.4px solid;
+  background-color: #1d1d1d;
+  color: #f0f0f0;
+  border: #546079 0.4px solid;
 }
 
 input[type=checkbox] + label {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 button {
-    cursor: pointer;
-    transition: background-color 0.5s ease;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
 }
 
 body.light-mode button {
-    background-color: #3a63df;
-
-    color: #fff;
+  background-color: #6495ed;
+  color: #fff;
 }
 
 body.dark-mode button {
-    background-color: #445f94;
-    color: #fff;
+  background-color: #445f94;
+  color: #fff;
 }
 
+button:hover {
+  background-color: #4169e1;
+}
 
 body.dark-mode button:hover {
-    background-color: #8499c4;
-}
-
-body.light-mode button:hover {
-    background-color:  #357afa;
+  background-color: #8499c4;
 }
 
 /* Estilo dos labels e checkboxes */
 label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    font-size: 12px;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 12px;
+  width: 100%;
 
 }
 
 .checkbox {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: justify;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
 
 
-    font-size: 12px;
+  font-size: 12px;
 
-    width: 70%;
-    padding: 10px;
-    border: 1px;
+  width: 70%;
+  padding: 10px;
+  border: 1px;
 
-    margin: 10px auto 10px auto;
+  margin: 10px auto 10px auto;
 
 }
 
 .checkbox p{
-    margin: 0;
+  margin: 0;
 } 
 
 .horas {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
-
 
 .horas-text {
 
-    width: 70%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-}
-
-
-.enviar {
-    border: 0;
-    margin-top: 5%;
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
 }
 
 /* Estilo para o ícone de calendário do input do tipo month */
 input[type="month"]::-webkit-calendar-picker-indicator {
-    /* Personalize o ícone aqui. Por exemplo, você pode mudar a cor de fundo: */
-    background-color: rgba(166, 198, 240, 0.541);
-    border-radius: 50%;
-}
-
-/* Adicione animações suaves para transições */
-* {
-  transition: all 0.3s ease;
-}
-
-/* Estilo de hover para botões e links */
-button:hover, a:hover {
-  transform: scale(1.05);
-}
-
-/* Animação de fadeIn para a página principal */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Adicione sombras sutis aos botões */
-button {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Adicione efeito de hover suave para inputs */
-input:hover, textarea:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Adicione uma borda arredondada para os inputs */
-input, textarea {
-  border-radius: 8px;
-}
-
-
-
-/* Adicione uma sombra sutil para o container principal */
-#container {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Adicione uma transição suave para o modo de alternância */
-#mode-toggle {
-  transition: transform 0.3s ease;
-}
-
-#mode-toggle:hover {
-  transform: rotate(90deg);
-}
-
-/* Adicione uma borda circular para o ícone do modo de alternância */
-#mode-toggle i {
+  /* Personalize o ícone aqui. Por exemplo, você pode mudar a cor de fundo: */
+  background-color: rgba(166, 198, 240, 0.541);
   border-radius: 50%;
 }
 
-/* Adicione uma animação ao ícone do modo de alternância */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.enviar {
+  border: 0;
+  margin-top: 5%;
 }
+
+/* Adicione uma transição suave para o modo de alternância */ 
+#mode-toggle { transition: transform 0.3s ease; } 
+#mode-toggle:hover { transform: rotate(90deg); } 
+/* Adicione uma borda circular para o ícone do modo de alternância */ 
+#mode-toggle i { border-radius: 50%; } /* Adicione uma animação ao ícone do modo de alternância */ 
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
