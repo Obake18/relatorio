@@ -2,7 +2,7 @@
 
 /* Estilo geral do site */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif
     /* text-align: center; */
     transition: background-color 0.5s ease;
     min-height: 100vh;
@@ -26,17 +26,24 @@ h1 {
     text-align: center;
 }
 
+/* Adicionando suavidade nas transições */
+* {
+    transition: all 0.3s ease;
+}
+
 #container {
+    width: 19em;
     border-radius: 2%;
     width: 100%;
-    max-width: 19em;
+    max-width: 70%;
     margin: 0 auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: background-color 0.5s ease;
-    backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(6px);
 }
+
+
 
 
 @media (min-width: 600px) {
@@ -52,11 +59,11 @@ h1 {
 }
 
 body.light-mode #container {
-   background-color:  rgba(255, 255, 255, 0.507);
+   background-color:  rgba(255, 255, 255, 0.226);
 }
 
 body.dark-mode #container {
-   background-color: rgba(10, 10, 10, 0.507);
+   background-color: rgba(10, 10, 10, 0.459);
 }
 
 /* Estilo dos inputs e botões */
@@ -115,7 +122,8 @@ button {
 }
 
 body.light-mode button {
-    background-color: #6495ed;
+    background-color: #39529c;
+
     color: #fff;
 }
 
@@ -124,12 +132,13 @@ body.dark-mode button {
     color: #fff;
 }
 
-button:hover {
-    background-color: #4169e1;
-}
 
 body.dark-mode button:hover {
     background-color: #8499c4;
+}
+
+body.light-mode button:hover {
+    background-color:  #357afa;
 }
 
 /* Estilo dos labels e checkboxes */
@@ -165,24 +174,19 @@ label {
     margin: 0;
 } 
 
-/* 
-.atividade-sim label{
-
-    margin-left: 3px;
-} 
-
-label input[type="checkbox"] {
-    margin-right: 1px !important;
-    margin-left: 4px;
-} */
 
 .horas label{
     font-size: 10px;
     width: 250px;
 
     justify-content: center;
-    margin-left: 35px;
+    margin-left: 36px;
 
+}
+
+.enviar {
+    border: 0;
+    margin-top: 5%;
 }
 
 /* Estilo para o ícone de calendário do input do tipo month */
