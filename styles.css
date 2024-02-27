@@ -1,10 +1,12 @@
-
 /* Estilo geral do site */
 body {
-    font-family: 'playfair', sans-serif;
+    align-items: center;
+    font-family: 'playfair';
     /* text-align: center; */
     transition: background-color 0.5s ease;
     min-height: 100vh;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 body.light-mode {
@@ -173,15 +175,26 @@ label {
     margin: 0;
 } 
 
-
-.horas label{
-    font-size: 10px;
-    width: 250px;
-
+.horas {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-left: 36px;
+    align-items: center;
 
 }
+
+
+.horas-text {
+
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
 
 .enviar {
     border: 0;
@@ -195,3 +208,76 @@ input[type="month"]::-webkit-calendar-picker-indicator {
     border-radius: 50%;
 }
 
+/* Adicione animações suaves para transições */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Estilo de hover para botões e links */
+button:hover, a:hover {
+  transform: scale(1.05);
+}
+
+/* Animação de fadeIn para a página principal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Adicione sombras sutis aos botões */
+button {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Adicione efeito de hover suave para inputs */
+input:hover, textarea:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Adicione uma borda arredondada para os inputs */
+input, textarea {
+  border-radius: 8px;
+}
+
+/* Ajuste o estilo do checkbox */
+
+#atividade-sim{
+    border: 1px solid #bd0000;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+
+/* Adicione uma sombra sutil para o container principal */
+#container {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Adicione uma transição suave para o modo de alternância */
+#mode-toggle {
+  transition: transform 0.3s ease;
+}
+
+#mode-toggle:hover {
+  transform: rotate(90deg);
+}
+
+/* Adicione uma borda circular para o ícone do modo de alternância */
+#mode-toggle i {
+  border-radius: 50%;
+}
+
+/* Adicione uma animação ao ícone do modo de alternância */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

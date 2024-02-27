@@ -31,19 +31,23 @@
                 <input type="month" id="mes"  placeholder="mês" required>
             </div>
 
-            <div class="checkbox"> 
-                <label>
+            <div class="checkbox">
+                <label for="atividade-sim">
                     <input type="checkbox" name="atividade" id="atividade-sim" class="">
-                <p>Marque se você participou de alguma modalidade do ministério durante o mês</p>
+                    <span class="checkbox-custom"></span>
+                    <p>Marque se você participou de alguma modalidade do ministério durante o mês</p>
                 </label>
             </div>
-
+            
             <div>
                 <input type="number" id="estudo-number" min="0" placeholder="Estudos Bíblicos">
             </div>
 
             <div class="horas">
-                <label for="horas" >Horas(Se for pioneiro auxiliar, regular, especial, ou missionário de campo)</label>
+                <div class="horas-text">
+                    <p for="horas" >Horas(Se for pioneiro auxiliar, regular, especial, ou missionário de campo)</p>
+                </div>
+
                 <input type="number" id="horas" placeholder="Horas" value="0">
                 <input type="number" id="minutos" placeholder="Minutos" step="5">
             </div>
